@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block content %}
+    <h2>List of Clients</h2>
+    <ul>
+        {% for client in clients %}
+            <li>
+                {{ client.first_name }} {{ client.last_name }}
+                <div class="mybutton2">
+                    <p><a href="{% url 'client_detail' client.id %}">Details</a></p>
+                </div>
+            </li>
+        {% empty %}
+            <li>No clients found</li>
+        {% endfor %}
+    </ul>
+    <div class="mybutton">
+        <p><a href="{% url 'client_create' %}">Create New Client</a></p>
+    </div>
+{% endblock %}

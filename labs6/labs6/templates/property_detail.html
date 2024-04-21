@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Property Detail{% endblock %}
+
+{% block content %}
+    <h2>Property Detail</h2>
+    <p>Type: {{ property.type }}</p>
+    <p>Address: {{ property.address }}</p>
+    <p>Price: ${{ property.price }}</p>
+    <div class="mybutton2">
+        <p><a href="{% url 'property_update' property.id %}">Edit</a>
+        <a href="{% url 'property_delete' property.id %}">Delete</a></p>
+    </div>
+{% endblock %}

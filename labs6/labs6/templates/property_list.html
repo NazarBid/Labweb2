@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Properties{% endblock %}
+
+{% block content %}
+    <h2>List of Properties</h2>
+    <ul>
+        {% for property in properties %}
+            <li>
+                {{ property.type }} - {{ property.address }} - ${{ property.price }}
+                <div class="mybutton2">
+                    <p><a href="{% url 'property_detail' property.id %}">Details</a></p>
+                </div>
+            </li>
+        {% empty %}
+            <li>No properties found</li>
+        {% endfor %}
+    </ul>
+    <div class="mybutton">
+        <p><a href="{% url 'property_create' %}">Create New Property</a></p>
+    </div>
+{% endblock %}

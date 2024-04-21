@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Request Detail{% endblock %}
+
+{% block content %}
+    <h2>Request Detail</h2>
+    <p>Client: {{ request.client }}</p>
+    <p>Property: {{ request.property }}</p>
+    <div class="mybutton2">
+        <p><a href="{% url 'request_update' request.id %}">Edit</a>
+        <a href="{% url 'request_delete' request.id %}">Delete</a></p>
+    </div>
+{% endblock %}

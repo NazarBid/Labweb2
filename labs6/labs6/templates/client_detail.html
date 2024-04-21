@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Client Detail{% endblock %}
+
+{% block content %}
+    <h2>Client Detail</h2>
+    <p>First Name: {{ client.first_name }}</p>
+    <p>Last Name: {{ client.last_name }}</p>
+    <p>Contact Email: {{ client.contact_email }}</p>
+    <div class="mybutton2">
+        <p><a href="{% url 'client_update' client.id %}">Edit</a>
+        <a href="{% url 'client_delete' client.id %}">Delete</a></p>
+    </div>
+{% endblock %}

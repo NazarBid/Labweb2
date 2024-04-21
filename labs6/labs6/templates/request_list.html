@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Requests{% endblock %}
+
+{% block content %}
+    <h2>List of Requests</h2>
+    <ul>
+        {% for request in requests %}
+            <li>
+                Request : {{ request.client }} - {{ request.property }}
+                <div class="mybutton2">
+                    <p><a href="{% url 'request_detail' request.id %}">Details</a></p>
+                </div>
+            </li>
+        {% empty %}
+            <li>No requests found</li>
+        {% endfor %}
+    </ul>
+    <div class="mybutton">
+        <p><a href="{% url 'request_create' %}">Create New Request</a></p>
+    </div>
+{% endblock %}

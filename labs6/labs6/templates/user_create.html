@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Create User{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles3.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <form method="post">
+            {% csrf_token %}
+            <h1>Create User</h1>
+            <div class="input-box">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="input-box">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </div>
+            <div class="input-box">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            <div class="input-box">
+                {{ form.role.label_tag }}
+                <select name="{{ form.role.name }}">
+                    {% for value, label in form.role.field.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        
+    </div>
+</body>
+</html>

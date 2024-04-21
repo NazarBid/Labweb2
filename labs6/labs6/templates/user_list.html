@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}User List{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div style="text-align: right;" class="mybutton">
+            <p><a href="{% url 'logout' %}">Logout</a></p>
+        </div>
+        <h1>User List</h1>
+    </header>
+    <nav style="text-align: center;">
+        <ul>
+            <div style="text-align: center"; class="mybutton">
+                <p><a href="{% url 'agent_list' %}">Agents</a>
+                <a href="{% url 'property_list' %}">Properties</a>
+                <a href="{% url 'client_list' %}">Clients</a>
+                <a href="{% url 'request_list' %}">Requests</a></p>
+            </div>
+        </ul>
+    </nav>
+    <ul>
+        {% for user in users %}
+            <li>
+                {{ user.username }} ({{ user.role }})
+                <div class="mybutton2">
+                    <p><a href="{% url 'user_detail' user.id %}">Details</a></p>
+                </div>
+            </li>
+        {% empty %}
+            <li>No users found</li>
+        {% endfor %}
+    </ul>
+    <div class="mybutton">
+        <p><a href="{% url 'user_create' %}">Create New User</a></p>
+    </div>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+</body>
+</html>
